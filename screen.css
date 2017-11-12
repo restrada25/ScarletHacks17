@@ -1,0 +1,11 @@
+html {
+  color: black;
+  background-color: white;
+  font-family: Roboto, Helvetica, Futura, "Trebuchet MS", Arial, sans-serif;
+  font-size: 1.125em; /* 18px */
+  line-height: 1.25em; /* 22.5px @ 18px em = 1 gridline */
+}
+
+ul {
+  padding-bottom: 1.25em; /* 22.5px : html line-height */
+}

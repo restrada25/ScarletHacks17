@@ -33,7 +33,7 @@ $.noConflict();
             type=data[i].property_type;
             $('#output').append(
               '<li>'+
-              ' <ul class="a"> Address: '+ address+
+              ' <ul class="a"> <b>Address: '+ address+'</b>'+
               '   <li>Community: '+community+'</li>'+
               '   <li>Phone Number: '+phone+'</li>'+
               '   <li>Property Type: '+type+'</li>'+
