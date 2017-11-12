@@ -2,7 +2,7 @@ $.noConflict();
 (function($){
   $(document).ready(function() {
       
-      var tkn, query, address;
+      var tkn, query, address, community, phone, type;
 
       $('#uc-form').on('submit', function(e) {
       $('#loading').empty();
@@ -18,23 +18,29 @@ $.noConflict();
             url: query,
             success: function(data) {
               console.log("success");
-//            $("#sent").empty(); //Empties out the #sent list
-//            type = data.sentiment.type; //Get either positive, negative of neutral
-//            score = data.sentiment.score; //Get score of sentiment
-//            addSentToDom(type, score); //Add the sentiment and the GIF to DOM
-              address=data.address;
-              console.log(address);
-              addToDom(address);
+           $("#output").empty(); //Empties out the #sent list
+              addToDom(data);
+              // console.log(Object.keys(data).length)
             }
           });
         }
 
-        addToDom = function (a) {
-          $('#output').append(
-            '<li>'+
-            ' <p>'+ address+'</p>'+
-            '</li>'
-          );
+        addToDom = function (data) {
+          for(var i = 0; i < Object.keys(data).length; i++){
+            address=data[i].address;
+            community=data[i].community_area;
+            phone=data[i].phone_number;
+            type=data[i].property_type;
+            $('#output').append(
+              '<li>'+
+              ' <ul class="a"> Address: '+ address+
+              '   <li>Community: '+community+'</li>'+
+              '   <li>Phone Number: '+phone+'</li>'+
+              '   <li>Property Type: '+type+'</li>'+
+              ' </ul>'+
+              '</li>'
+            );
+          }
         }
 
         getData();
